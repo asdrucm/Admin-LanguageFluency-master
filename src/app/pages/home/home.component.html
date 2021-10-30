@@ -1,0 +1,148 @@
+<div class="container-fluid">
+    <app-pagetitle title="Inicio" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+    <div class="row mb-2">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Speaker por país</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="speakerPerCountry" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Improver por país</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="improverPerCountry" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nuevos Speaker</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="newSpeaker" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nuevos Improver</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="newImprover" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Speaker por idioma</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="speakerLanguage" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Improver por idioma</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="improverLanguage" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Nuevos por idioma</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="newUserByLanguage" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>Cancelados por idioma</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="cancelByLanguage" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Incidencias del mes</h4>
+          </div>
+          <div class="card-body">
+            <div echarts [options]="incidenciasMes" class="demo-chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- <div class="row mb-2">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                  Speakers
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size: 30px;">{{ lengthSpeaker }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                  Improvers
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size: 30px;">{{ lengthImprover }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                  Llamadas programadas
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size: 30px;">{{ lengthScheduledCalls }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                  Speakers en espera de aprobación
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size: 30px;">{{ lengthSpeakerAwaitingApp }}</h5>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

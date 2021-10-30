@@ -1,0 +1,79 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="addAdminForm">
+    <div class="modal-header bg-dark text-light ">
+        <h4 class="modal-title text-light">Crear Administrador</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label for="name" class="col-md-2 col-form-label">Nombre</label>
+            <div class="col-md-10">
+                <input type="text" name="name" id="name" class="form-control" formControlName="name" [ngClass]="{'is-invalid': form.name.dirty && form.name.errors}" required>
+                <div *ngIf="form.name.errors" class="invalid-feedback">
+                    <span *ngIf="form.name.errors.required">El campo Nombre es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="lastName" class="col-md-2 col-form-label">Apellidos</label>
+            <div class="col-md-10">
+                <input type="text" name="lastName" class="form-control" formControlName="lastName" [ngClass]="{'is-invalid': form.lastName.dirty && form.lastName.errors}">
+                <div *ngIf="form.lastName.errors" class="invalid-feedback">
+                    <span *ngIf="form.lastName.errors.required">El campo Apellidos es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" class="col-md-2 col-form-label">E-mail</label>
+            <div class="col-md-10">
+                <input type="email" name="email" class="form-control" formControlName="email" [ngClass]="{'is-invalid': form.email.errors && form.email.dirty }">
+                <div *ngIf="form.email.errors" class="invalid-feedback">
+                    <span *ngIf="form.email.errors.required">El campo E-mail es requerido</span>
+                    <span *ngIf="form.email.errors.pattern">El campo debe contener un email valido.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-md-2 col-form-label">Password</label>
+            <div class="col-md-10">
+                <input type="password" name="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': form.password.errors && form.password.dirty }">
+                <div *ngIf="form.password.errors" class="invalid-feedback">
+                    <span *ngIf="form.password.errors.required">El campo Password es requerido</span>
+                    <span *ngIf="form.password.errors.minlength">El campo Password debe contener minimo 6 caracteres</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="language" class="col-md-2 col-form-label">Permisos</label>
+            <div class="col-md-10">
+              <!--<select name="language" class="form-control" formControlName="language" [ngClass]="{'is-invalid': form.language.errors && form.language.dirty }" multiple required>
+                <option value="en">Inglés</option>
+                <option value="es">Español</option>
+              </select>-->
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/"/> Dashboard</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/improvers"/> Gestión de Improvers</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/potentials"/> Gestión de Potenciales</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/speakers"/> Gestión de Speakers</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/banners"/> Gestión de banners</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/pagos"/> Gestión de pagos</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/facturas"/> Gestión de facturas</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/notifications"/> Notificaciones</label><br>
+              <label for=""><input type="checkbox" (change)="changePermissions($event)" value="/soporte"/> Gestión de soporte</label>
+                <!--<input type="email" name="language" class="form-control" formControlName="language" [ngClass]="{'is-invalid': form.language.errors && form.language.dirty }">-->
+                <!--<div *ngIf="form.language.errors" class="invalid-feedback">
+                    <span *ngIf="form.language.errors.required">El campo Idioma es requerido</span>
+                </div>-->
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button  class="btn btn-success" (click)="onClick()" [disabled]="addAdminForm.invalid">Crear</button>
+        <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Cancelar</button>
+    </div>
+</form>

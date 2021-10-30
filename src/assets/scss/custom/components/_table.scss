@@ -1,0 +1,40 @@
+// 
+// _table.scss
+// 
+
+.table {
+  th {
+      font-weight: $font-weight-bold;
+  }
+}
+
+//Table centered
+.table-centered {
+  td,th {
+      vertical-align: middle !important;
+  }
+}
+
+.table-nowrap {
+  th, td {
+    white-space: nowrap;
+  }
+}
+.buttons-copy{
+  border: 0!important;
+  background: #1dbb8c!important;
+  color: #fff!important;
+}
+.buttons-print{
+  border: 0!important;
+  background: #fcb92c!important;
+  color: #fff!important;
+}
+.buttons-excel{
+  border: 0!important;
+  background: #0276ed!important;
+  color: #fff!important;
+}
+.dataTables_scrollBody thead tr[role="row"]{
+  visibility: collapse !important;
+}

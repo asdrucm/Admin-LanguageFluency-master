@@ -1,0 +1,127 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="addPotentialForm">
+    <div class="modal-header bg-dark text-light ">
+        <h4 class="modal-title text-light">Crear Potencial</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label for="name" class="col-md-2 col-form-label">Nombre</label>
+            <div class="col-md-10">
+                <input type="text" name="name" id="name" class="form-control" formControlName="name" [ngClass]="{'is-invalid': form.name.dirty && form.name.errors}" required>
+                <div *ngIf="form.name.errors" class="invalid-feedback">
+                    <span *ngIf="form.name.errors.required">El campo Nombre es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="lastName" class="col-md-2 col-form-label">Apellidos</label>
+            <div class="col-md-10">
+                <input type="text" name="lastName" class="form-control" formControlName="lastName" [ngClass]="{'is-invalid': form.lastName.dirty && form.lastName.errors}">
+                <div *ngIf="form.lastName.errors" class="invalid-feedback">
+                    <span *ngIf="form.lastName.errors.required">El campo Apellidos es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" class="col-md-2 col-form-label">E-mail</label>
+            <div class="col-md-10">
+                <input type="email" name="email" class="form-control" formControlName="email" [ngClass]="{'is-invalid': form.email.errors && form.email.dirty }">
+                <div *ngIf="form.email.errors" class="invalid-feedback">
+                    <span *ngIf="form.email.errors.required">El campo E-mail es requerido</span>
+                    <span *ngIf="form.email.errors.pattern">El campo debe contener un email valido.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="gender" class="col-md-2 col-form-label">Género</label>
+            <div class="col-md-10">
+                <select name="gender" class="form-control" formControlName="gender" [ngClass]="{'is-invalid': form.gender.dirty && form.gender.errors}" required>
+                  <option value="hombre">Hombre</option>
+                  <option value="mujer">Mujer</option>
+                </select>
+                <div *ngIf="form.gender.errors" class="invalid-feedback">
+                    <span *ngIf="form.gender.errors.required">El campo Género es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="phone" class="col-md-2 col-form-label">Teléfono</label>
+            <div class="col-md-10">
+                <input type="text" name="phone" class="form-control" formControlName="phone" [ngClass]="{'is-invalid': form.phone.errors && form.phone.dirty }">
+                <div *ngIf="form.phone.errors" class="invalid-feedback">
+                    <span *ngIf="form.phone.errors.required">El campo Teléfono es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="birthDate" class="col-md-2 col-form-label">Cumpleaños</label>
+            <div class="col-md-10">
+                <input type="date" name="birthDate" class="form-control" formControlName="birthDate" [ngClass]="{'is-invalid': form.birthDate.errors && form.birthDate.dirty }">
+                <div *ngIf="form.birthDate.errors" class="invalid-feedback">
+                    <span *ngIf="form.birthDate.errors.required">El campo Cumpleaños es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="bio" class="col-md-2 col-form-label">Bio</label>
+            <div class="col-md-10">
+                <textarea name="bio" class="form-control" formControlName="bio" [ngClass]="{'is-invalid': form.bio.errors && form.bio.dirty }"></textarea>
+                <div *ngIf="form.bio.errors" class="invalid-feedback">
+                    <span *ngIf="form.bio.errors.required">El campo Bio es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="horario" class="col-md-2 col-form-label">Horario</label>
+            <div class="col-md-5">
+                <input type="date" name="fhorario" class="form-control" formControlName="fhorario" [ngClass]="{'is-invalid': form.fhorario.errors && form.fhorario.dirty }">
+                <div *ngIf="form.fhorario.errors" class="invalid-feedback">
+                    <span *ngIf="form.fhorario.errors.required">El campo Fecha es requerido</span>
+                  </div>
+            </div>
+            <div class="col-md-5">
+                <input type="time" name="horario" class="form-control" formControlName="horario" [ngClass]="{'is-invalid': form.horario.errors && form.horario.dirty }">
+                <div *ngIf="form.horario.errors" class="invalid-feedback">
+                    <span *ngIf="form.horario.errors.required">El campo Horario es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="idioma" class="col-md-2 col-form-label">Idioma</label>
+            <div class="col-md-10">
+                <select name="idioma" class="form-control" formControlName="idioma" [ngClass]="{'is-invalid': form.idioma.errors && form.idioma.dirty }" required>
+                  <option value="en">Inglés</option>
+                  <option value="es">Español</option>
+                </select>
+                <div *ngIf="form.idioma.errors" class="invalid-feedback">
+                    <span *ngIf="form.idioma.errors.required">El campo Idioma es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-md-2 col-form-label">Password</label>
+            <div class="col-md-10">
+                <input type="password" name="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': form.password.errors && form.password.dirty }">
+                <div *ngIf="form.password.errors" class="invalid-feedback">
+                    <span *ngIf="form.password.errors.required">El campo Password es requerido</span>
+                    <span *ngIf="form.password.errors.minlength">El campo Password debe contener minimo 6 caracteres</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button  class="btn btn-success" (click)="onClick()" [disabled]="addPotentialForm.invalid">Crear</button>
+        <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Cancelar</button>
+    </div>
+</form>

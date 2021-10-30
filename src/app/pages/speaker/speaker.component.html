@@ -1,0 +1,169 @@
+<div class="container-fluid">
+    <app-pagetitle title="Detalle de Speaker" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+
+    <div class="row" *ngIf="usuario">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-xl-5">
+                <div class="product-detail">
+                  <div class="row">
+
+                    <div class="col-md-10 col-12">
+                        <div class="product-img">
+                            <!--<img [src]="usuario.foto" alt="" class="img-fluid mx-auto d-block">-->
+                            <div [ngStyle]="{'background-image': 'url(' + usuario.foto + ')', 'width': '19.7rem', 'height': '19.7rem', 'position': 'relative', 'top': '0', 'left': '0', 'background-position': 'top center', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'border-radius': '50%', 'border': '2px solid #ff9400'}"></div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end product img -->
+              </div>
+              <div class="col-xl-7">
+                <div class="mt-4 mt-xl-3">
+                  <a href="" class="text-primary">{{usuario.role == 'conversador' ? 'Speaker' : 'Improver'}}</a>
+                  <h5 class="mt-1 mb-3" style="text-transform: capitalize;">{{usuario.name}} {{usuario.lastName}} </h5>
+
+                  <div class="d-inline-flex">
+                    <div class="text-muted mr-3" [innerHTML]="tstars">
+                    </div>
+                    <!-- <div class="text-muted">( 0 )</div> -->
+                  </div>
+                  <!-- <p class="mt-3">{{usuario.bio}} </p> -->
+                  <hr class="my-4">
+
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div>
+                        <h5 class="font-size-14">Perfil</h5>
+                        <ul class="list-unstyled product-desc-list">
+                            <li>
+                              <p>Género <i class="mdi mdi-gender-male-female"></i>: {{usuario.gender | titlecase}}</p>
+                            </li>
+                            <li>
+                              <p>Fecha de nacimiento <i class="mdi mdi-cake"></i>: {{usuario.birthDate}}</p>
+                            </li>
+                            <li>
+                              <p>Correo electrónico <i class="mdi mdi-email"></i>: {{usuario.email}}</p>
+                            </li>
+                            <li>
+                              <p>Número telefónico <i class="mdi mdi-phone"></i>: {{usuario.phone}}</p>
+                            </li>
+                        </ul>
+
+                      </div>
+                    </div>
+
+                    <div>
+                      <!-- <h5 class="font-size-14">Services :</h5>
+                      <ul class="list-unstyled product-desc-list">
+                        <li><i class="mdi mdi-sync text-primary mr-1 align-middle font-size-16"></i> 10 Days Replacement
+                        </li>
+                        <li><i class="mdi mdi-currency-usd-circle text-primary mr-1 align-middle font-size-16"></i> Cash
+                          on Delivery available</li>
+                      </ul> -->
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- end row -->
+            <div class="mt-4">
+              <h5 class="font-size-14 mb-3">Movimientos: </h5>
+              <div class="product-desc">
+                <ul ngbNav #productNav="ngbNav" [activeId]="1" class="nav-tabs nav-tabs-custom">
+                  <li [ngbNavItem]="1">
+                    <a ngbNavLink>
+                      <a class="nav-link" id="desc-tab" data-toggle="tab" href="#desc" role="tab">Referidos</a>
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="" style="max-height: 300px;overflow: scroll;">
+                        <table class="table mb-0">
+                          <thead>
+                            <tr>
+                              <th>Nombre</th>
+                              <th>E-mail</th>
+                              <th>Género</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let referido of referidos">
+                              <td>{{referido.fullName}}</td>
+                              <td>{{referido.email}}</td>
+                              <td>{{referido.gender}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="2">
+                    <a ngbNavLink>
+                      <a class="nav-link" id="specifi-tab" data-toggle="tab" href="#specifi" role="tab">Comisiones</a>
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="" style="max-height: 300px;overflow: scroll;">
+                        <table class="table table-nowrap mb-0">
+                          <thead>
+                            <tr>
+                              <th>Monto</th>
+                              <th>Comprobante</th>
+                              <th>Fecha pagada</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let pagos of payments">
+                              <td>{{pagos.amount}}</td>
+                              <td><a href="{{pagos.pdfInvoice}}" class="btn btn-sm btn-success mt-1">Ver comprobante</a></td>
+                              <td>{{pagos.dateCreated}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </ng-template>
+                  </li>
+                </ul>
+                <div [ngbNavOutlet]="productNav" class="border border-top-0 p-4"></div>
+              </div>
+            </div>
+            <div class="mt-4" *ngIf="llamadas">
+              <h5 class="font-size-14">Llamadas : </h5>
+              <label for="type" class="mt-3"><b>Mes</b></label>
+              <select class="form-control col-md-3" id="type">
+                <option *ngFor="let dates of collectGetmonths" selected="{{dates.selectMonth}}" value="{{dates.fecha}}">{{dates.mes}} {{dates.year}}</option>
+              </select>
+              <div class="d-inline-flex mb-3 mt-3">
+                <div class="text-muted">( {{llamadas.length}} LLamadas realizadas)</div>
+                <div class="text-muted">( 108 Minutos de llamadas)</div>
+              </div>
+              <div class="border p-4 rounded">   
+                <div class="media border-bottom pb-3" *ngFor="let llamada of llamadas">
+                  <div class="media-body">
+                    <h5 class="font-size-15 mb-3" *ngIf="llamada.spe">{{ llamada.spe.name }} {{ llamada.spe.lastName }}</h5>
+                    <ul class="list-inline product-review-link mb-0" style="display:flex;flex-direction:column;">
+                      <li class="list-inline-item mb-2">
+                        <div class="text-muted mr-3" [innerHTML]="llamada.stars">
+                        </div>
+                      </li> 
+                      <li class="list-inline-item">
+                        <audio controls class="audio-container" style="height:32px;">
+                          <source src="{{llamada.audio}}" type="audio/mpeg">
+                        </audio>                        
+                      </li>
+                    </ul>
+                  </div>
+                  <!--<p class="float-sm-right font-size-12">{{ llamada.date}} </p>-->
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <!-- end card -->
+      </div>
+    </div>
+    <!-- end row -->
+
+  </div>

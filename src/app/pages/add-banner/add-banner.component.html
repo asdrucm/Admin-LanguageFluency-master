@@ -1,0 +1,58 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="addBannerForm">
+    <div class="modal-header bg-dark text-light ">
+        <h4 class="modal-title text-light">Crear Banner</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label for="file" class="col-md-2 col-form-label">Archivo</label>
+            <div class="col-md-10">
+                <input type="file" accept="image/*" name="file" id="file" class="form-control" formControlName="file" (change)="onFileSelected($event)" [ngClass]="{'is-invalid': form.file.dirty && form.file.errors}" required>
+                <div *ngIf="form.file.errors" class="invalid-feedback">
+                    <span *ngIf="form.file.errors.required">El campo Nombre es requerido</span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="location" class="col-md-2 col-form-label">Ubicación</label>
+            <div class="col-md-10">
+              <!--<select name="location" class="form-control" formControlName="location" [ngClass]="{'is-invalid': form.location.dirty && form.location.errors}" multiple required>
+                <option value="appimp">App Improver</option>
+                <option value="appspk">App Speaker</option>
+              </select>-->
+              <label for="appimp"><input type="checkbox" value="appimp" (change)="changeLocations($event)"/> App Improver</label><br>
+              <label for="appspk"><input type="checkbox" value="appspk" (change)="changeLocations($event)"/> App Speaker</label>
+                <!--<input type="text" name="location" class="form-control" formControlName="location" [ngClass]="{'is-invalid': form.location.dirty && form.location.errors}">-->
+                <!--<div *ngIf="form.location.errors" class="invalid-feedback">
+                    <span *ngIf="form.location.errors.required">El campo Ubicación es requerido</span>
+                </div>-->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="language" class="col-md-2 col-form-label">Idioma</label>
+            <div class="col-md-10">
+              <!--<select name="language" class="form-control" formControlName="language" [ngClass]="{'is-invalid': form.language.errors && form.language.dirty }" multiple required>
+                <option value="en">Inglés</option>
+                <option value="es">Español</option>
+              </select>-->
+              <label for="en"><input type="checkbox" value="en" (change)="changeLanguages($event)"/> Inglés</label><br>
+              <label for="es"><input type="checkbox" value="es" (change)="changeLanguages($event)"/> Español</label>
+                <!--<input type="email" name="language" class="form-control" formControlName="language" [ngClass]="{'is-invalid': form.language.errors && form.language.dirty }">-->
+                <!--<div *ngIf="form.language.errors" class="invalid-feedback">
+                    <span *ngIf="form.language.errors.required">El campo Idioma es requerido</span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div *ngIf="percent > 0 && percent <= 100" class="progress" style="width: 100%; height: 15px;">
+          <div class="progress-bar bg-success" role="progressbar" attr.aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: percent + '%'}">{{percent}}%</div>
+        </div>
+        <button  class="btn btn-success" [disabled]="addBannerForm.invalid">Crear</button>
+        <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Cancelar</button>
+    </div>
+</form>
